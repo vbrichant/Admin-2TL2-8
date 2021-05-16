@@ -1,0 +1,10 @@
+version: '3.1'
+services:
+    webserver:
+        image: php:7.3-apache
+        restart: always
+        volumes:
+            - ./:/var/www/html
+            -  /srv/www/test/test01/apache_log:/var/log/apache2
+        ports: 
+            -"14080:80"
