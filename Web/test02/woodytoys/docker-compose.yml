@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db:
+    container_name: db-container
+    image: mysql:latest
+    environment:
+      #valeur de test
+      MYSQL_DATABASE : db_woodtoys
+      MYSQL_USER: "administrateur"
+      MYSQL_ROOT_PASSWORD: e9w86036f78sd9 
+      MYSQL_PASSWORD: e9w86036f78sd9
+    volumes:
+    - "./db:/docker-entrypoint-initdb.d"
+  web:
+    container_name: web-container
+    build:
+      context: ./web
+    links:
+      - db
+    ports:
+    - 80:80 
